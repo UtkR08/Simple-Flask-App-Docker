@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: myapp
-          image: demolearnacr.azurecr.io/demo_dev/product-list-app:${{ github.sha }}
+          image: demolearnacr.azurecr.io/demo_dev/product_list_app:$tag
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5070
