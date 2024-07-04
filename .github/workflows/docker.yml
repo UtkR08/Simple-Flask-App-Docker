@@ -1,0 +1,35 @@
+name: 'Build and Push '
+
+on:
+  push:
+    branches: 
+      - 'main'
+  
+
+permissions:
+  id-token: write
+  contents: read
+  
+jobs:
+  Docker:
+    name: 'Docker'
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4	
+    - name: Azure Login
+      run: |
+        az login --service-principal -u ${{ secrets.ARM_CLIENT_ID }} -p ${{ secrets.ARM_CLIENT_SECRET }} --tenant ${{ secrets.ARM_TENANT_ID }}
+
+    - name: Login to Azure Container Registry
+      run: az acr login --name demolearnacr
+    - name: build image
+      run: docker build -t demolearnacr.azurecr.io/product_list_app:${{ github.sha }} .
+      working-directory: ./myapp
+    - name : push image to acr
+      run: docker push demolearnacr.azurecr.io/product_list_app:${{ github.sha }}
