@@ -1,0 +1,37 @@
+name: Deploy to AKS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Azure CLI
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Start AKS Cluster
+      run: |
+        az aks start --name myAKSCluster --resource-group Demo-rg
+        az aks get-credentials --resource-group Demo-rg --name myAKSCluster
+
+    - name: Deploy to AKS
+      run: |
+        kubectl apply -f manifestfile.yml
+
+    - name: Port Forwarding
+      run: |
+        kubectl port-forward svc/my-app 5070:5070 &
+        
+    - name: Test Application
+      run: |
+        curl http://localhost:5070/products
+
