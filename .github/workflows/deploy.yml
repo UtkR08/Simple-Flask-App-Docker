@@ -29,7 +29,7 @@ jobs:
     - name: Deploy to AKS
       run: |
         kubectl apply -f manifestfile.yml
-
+      working-directory: ./myapp
     - name: Port Forwarding
       run: |
         kubectl port-forward svc/my-app 5070:5070 &
