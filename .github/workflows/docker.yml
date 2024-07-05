@@ -40,3 +40,5 @@ jobs:
         propertyPath: 'spec.template.container.image'
         value: demolearnacr.azurecr.io/demo_dev/product-list-app:${{ github.sha }}
         commitChange: true
+        createPR: false
+        targetBranch: main
