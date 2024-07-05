@@ -33,3 +33,10 @@ jobs:
       working-directory: ./myapp
     - name : push image to acr
       run: docker push demolearnacr.azurecr.io/demo_dev/product_list_app:${{ github.sha }}
+    - name: Update values.yaml
+      uses: fjogeleit/yaml-update-action@main
+      with:
+        valueFile: 'manifest/deployment.yaml'
+        propertyPath: 'spec.template.container.image'
+        value: demolearnacr.azurecr.io/demo_dev/product-list-app:${{ github.sha }}
+        commitChange: true
