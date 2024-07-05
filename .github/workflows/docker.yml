@@ -30,7 +30,7 @@ jobs:
       run: az acr login --name demolearnacr
     - name: build image
       run: docker build -t demolearnacr.azurecr.io/demo_dev/product_list_app:${{ github.sha }} .
-      working-directory: ./myapp
+      working-directory: ./src
     - name : push image to acr
       run: docker push demolearnacr.azurecr.io/demo_dev/product_list_app:${{ github.sha }}
     - name: Update values.yaml
