@@ -25,4 +25,4 @@ spec:
     container:
       image: demolearnacr.azurecr.io/demo_dev/product-list-app:ed11a3a9340e231a22555d273fe78aa84d03c00b
     containers:
-      image: demolearnacr.azurecr.io/demo_dev/product-list-app:e157b7f277980c8f23b8bbea87bfc57b2f2b0add
+      image: demolearnacr.azurecr.io/demo_dev/product-list-app:27ece3ee08a49392fb1fd234fce53b814758da83
