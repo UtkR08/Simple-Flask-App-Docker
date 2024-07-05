@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: myapp
-          image: demolearnacr.azurecr.io/demo_dev/product-list-app:5e09ecc545fb6a9cc618bfd28e08d4dbcdf21f79
+          image: demolearnacr.azurecr.io/demo_dev/product-list-app:2cb2c5a8098b8a5a402aadc179d5308cfeb77243
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5070
