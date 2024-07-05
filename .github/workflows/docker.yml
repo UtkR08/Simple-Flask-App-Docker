@@ -39,6 +39,7 @@ jobs:
         valueFile: 'manifest/deployment.yml'
         propertyPath: 'spec.template.container.image'
         value: demolearnacr.azurecr.io/demo_dev/product-list-app:${{ github.sha }}
+        token: ${{ secrets.ACCESS_TOKEN }}
         updateFile: true
         commitChange: true
         createPR: false
