@@ -22,3 +22,5 @@ spec:
             - containerPort: 5070
       imagePullSecrets:
         - name: my-secret
+    container:
+      image: demolearnacr.azurecr.io/demo_dev/product-list-app:ed11a3a9340e231a22555d273fe78aa84d03c00b
