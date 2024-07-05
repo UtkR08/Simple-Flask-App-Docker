@@ -12,10 +12,10 @@ spec:
   template:
     metadata:
       labels:
-        app: my-appa
+        app: my-app
     spec:
       containers:
-        - name: myapp
+        - name: my-app
           image: demolearnacr.azurecr.io/demo_dev/product-list-app:v1
           imagePullPolicy: IfNotPresent
           ports:

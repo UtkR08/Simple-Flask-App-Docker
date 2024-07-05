@@ -15,23 +15,10 @@ spec:
         app: my-app
     spec:
       containers:
-        - name: myapp
-          image: demolearnacr.azurecr.io/demo_dev/product_list_app:
-          imagePullPolicy: Always
+        - name: my-app
+          image: product-list-app:v1
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5070
       imagePullSecrets:
         - name: my-secret
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: my-app
-spec:
-  selector:
-    app: my-app
-  ports:
-    - protocol: TCP
-      port: 5070
-      targetPort: 5070
